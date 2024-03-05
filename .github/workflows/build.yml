@@ -5,7 +5,7 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: [ windows-latest ]
+    runs-on: [ ubuntu-latest ]
     permissions:
       actions: read
       contents: read
@@ -25,7 +25,7 @@ jobs:
     #     chmod +x ./ADMIN_DEV/AutoBuild.sh
     - name: run build script
       run: |
-        cd Miui_Launcher_Mod
+        # cd Miui_Launcher_Mod
         bash autobuild.sh
 #     - name: run codeql analysis
 #       run: codeql database init --all
