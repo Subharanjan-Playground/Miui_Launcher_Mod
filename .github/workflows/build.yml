@@ -1,0 +1,39 @@
+name: "Build"
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: [ windows-latest ]
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+     
+    - name: setup JDK
+      uses: actions/setup-java@v2
+      with:
+       distribution: 'adopt'
+       java-version: '11'
+       
+    # - name: build application
+    #   run: |
+    #     chmod +x ./ADMIN_DEV/AutoBuild.sh
+    - name: run build script
+      run: |
+        cd Miui_Launcher_Mod
+        bash autobuild.sh
+#     - name: run codeql analysis
+#       run: codeql database init --all
+       
+#     - name: run codeql analysis
+#       run: codeql analyze --all
+    
+    # - name: Perform CodeQL Analysis
+    #   uses: github/codeql-action/analyze@v2
+    #   with:
+    #     category: "/language:${{matrix.language}}"
